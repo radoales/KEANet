@@ -18,21 +18,22 @@ namespace KEANet.Services.Implementations
         }
         public int AddInternetConnection(bool internetConnection)
         {
-            if (internetConnection == true)
-            {
-                var internetConnectionfromDb = _db.Products.
+            var internetConnectionfromDb = _db.Products.
                     FirstOrDefault(x => x.Name == "Internet Connection");
 
-                if (internetConnectionfromDb == null)
-                {
-                    throw new ArgumentException();
-                }
+            if (internetConnectionfromDb == null)
+            {
+                throw new ArgumentException("Product not found");
+            }
+
+            if (internetConnection == true)
+            {
 
                 basket.Add(internetConnectionfromDb);
             }
             else
             {
-                basket.Remove(_db.Products.FirstOrDefault(x => x.Name == "Internet Connection"));
+                basket.Remove(internetConnectionfromDb);
             }
 
             return basket.Sum(x => x.Price);
@@ -40,17 +41,17 @@ namespace KEANet.Services.Implementations
 
         public int AddPhoneLines()
         {
+            var phoneLinefromDb = _db.Products.
+                    FirstOrDefault(x => x.Name == "Phone Lines");
+
+            if (phoneLinefromDb == null)
+            {
+                throw new ArgumentException("Product not found");
+            }
+
             if (basket.Count(x => x.Name == "Phone Lines") <= 7)
             {
-                try
-                {
-                    basket.Add(_db.Products.FirstOrDefault(x => x.Name == "Phone Line"));
-                }
-                catch (Exception e)
-                {
-
-                    throw new ArgumentException(e.Message);
-                }
+                basket.Add(phoneLinefromDb);
             }
             else
             {
@@ -82,9 +83,17 @@ namespace KEANet.Services.Implementations
 
         public int RemovePhoneLines()
         {
+            var phoneLinefromDb = _db.Products.
+                    FirstOrDefault(x => x.Name == "Phone Lines");
+
+            if (phoneLinefromDb == null)
+            {
+                throw new ArgumentException("Product not found");
+            }
+
             if (basket.Count(x => x.Name == "Phone Lines") > 0)
             {
-                basket.Remove(_db.Products.FirstOrDefault(x => x.Name == "Phone Line"));
+                basket.Remove(phoneLinefromDb);
             }
             else
             {
@@ -96,30 +105,30 @@ namespace KEANet.Services.Implementations
 
         public int SelectPhone(string modelName)
         {
-            try
-            {
-                basket.Add(_db.Products.FirstOrDefault(x => x.Name == modelName));
-            }
-            catch (Exception e)
-            {
+            var phoneModelFromDb = _db.Products
+                .FirstOrDefault(x => x.Name == modelName);
 
+            if (phoneModelFromDb == null)
+            {
                 throw new ArgumentException("No selected model to add");
             }
+
+            basket.Add(phoneModelFromDb);
 
             return basket.Sum(x => x.Price);
         }
 
         public int UnSelectPhone(string modelName)
         {
-            try
-            {
-                basket.Remove(_db.Products.FirstOrDefault(x => x.Name == modelName));
-            }
-            catch (Exception e)
-            {
+            var phoneModelFromDb = _db.Products
+               .FirstOrDefault(x => x.Name == modelName);
 
-                throw new ArgumentException("No selected model to remove");
+            if (phoneModelFromDb == null)
+            {
+                throw new ArgumentException("No selected model to add");
             }
+
+            basket.Remove(phoneModelFromDb);
 
             return basket.Sum(x => x.Price);
         }

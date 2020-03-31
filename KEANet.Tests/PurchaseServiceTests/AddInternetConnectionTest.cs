@@ -37,7 +37,7 @@ namespace KEANet.Tests
                 .Be(0);
         }
         [Fact]
-        public void PassFalse_ShouldThrow_ArgumentException()
+        public void PurchaseServiceWithEmptyDatabase_ShouldThrow_ArgumentException()
         {
             //Arange
             var service = MockPurchaseServiceWithEmptyDatabase();
