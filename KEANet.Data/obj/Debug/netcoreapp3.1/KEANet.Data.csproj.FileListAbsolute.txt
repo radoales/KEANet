@@ -1,0 +1,8 @@
+C:\Programming\Testing\KEANet\KEANet.Data\bin\Debug\netcoreapp3.1\KEANet.Data.deps.json
+C:\Programming\Testing\KEANet\KEANet.Data\bin\Debug\netcoreapp3.1\KEANet.Data.dll
+C:\Programming\Testing\KEANet\KEANet.Data\bin\Debug\netcoreapp3.1\KEANet.Data.pdb
+C:\Programming\Testing\KEANet\KEANet.Data\obj\Debug\netcoreapp3.1\KEANet.Data.csprojAssemblyReference.cache
+C:\Programming\Testing\KEANet\KEANet.Data\obj\Debug\netcoreapp3.1\KEANet.Data.AssemblyInfoInputs.cache
+C:\Programming\Testing\KEANet\KEANet.Data\obj\Debug\netcoreapp3.1\KEANet.Data.AssemblyInfo.cs
+C:\Programming\Testing\KEANet\KEANet.Data\obj\Debug\netcoreapp3.1\KEANet.Data.dll
+C:\Programming\Testing\KEANet\KEANet.Data\obj\Debug\netcoreapp3.1\KEANet.Data.pdb

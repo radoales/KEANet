@@ -1,0 +1,11 @@
+C:\Programming\Testing\KEANet\KEANet\bin\Debug\netcoreapp3.1\KEANet.Console.exe
+C:\Programming\Testing\KEANet\KEANet\bin\Debug\netcoreapp3.1\KEANet.Console.deps.json
+C:\Programming\Testing\KEANet\KEANet\bin\Debug\netcoreapp3.1\KEANet.Console.runtimeconfig.json
+C:\Programming\Testing\KEANet\KEANet\bin\Debug\netcoreapp3.1\KEANet.Console.runtimeconfig.dev.json
+C:\Programming\Testing\KEANet\KEANet\bin\Debug\netcoreapp3.1\KEANet.Console.dll
+C:\Programming\Testing\KEANet\KEANet\bin\Debug\netcoreapp3.1\KEANet.Console.pdb
+C:\Programming\Testing\KEANet\KEANet\obj\Debug\netcoreapp3.1\KEANet.Console.csprojAssemblyReference.cache
+C:\Programming\Testing\KEANet\KEANet\obj\Debug\netcoreapp3.1\KEANet.Console.AssemblyInfoInputs.cache
+C:\Programming\Testing\KEANet\KEANet\obj\Debug\netcoreapp3.1\KEANet.Console.AssemblyInfo.cs
+C:\Programming\Testing\KEANet\KEANet\obj\Debug\netcoreapp3.1\KEANet.Console.dll
+C:\Programming\Testing\KEANet\KEANet\obj\Debug\netcoreapp3.1\KEANet.Console.pdb
