@@ -19,11 +19,11 @@
             service.basket.AddRange(
             new List<Product>()
             {
-                  new Product{Id = 3, Name = "Motorola G99", Price = 800, Regularity = Regularity.once},
-                  new Product{Id = 4, Name = "iPhone 99", Price = 6000, Regularity = Regularity.once},
-                  new Product{Id = 5, Name = "Samsung Galaxy 99", Price = 1000, Regularity = Regularity.once},
-                  new Product{Id = 6, Name = "Sony Xperia 99", Price = 900, Regularity = Regularity.once},
-                  new Product{Id = 7, Name = "Huawei 99", Price = 900, Regularity = Regularity.once}
+                  new Product{Id = 3, Name = "Motorola G99", Price = 800, Regularity = Regularity.Once},
+                  new Product{Id = 4, Name = "iPhone 99", Price = 6000, Regularity = Regularity.Once},
+                  new Product{Id = 5, Name = "Samsung Galaxy 99", Price = 1000, Regularity = Regularity.Once},
+                  new Product{Id = 6, Name = "Sony Xperia 99", Price = 900, Regularity = Regularity.Once},
+                  new Product{Id = 7, Name = "Huawei 99", Price = 900, Regularity = Regularity.Once}
             });
             var sumOfBasketAfterRemove = service.basket.Sum(x => x.Price) - price;
 

@@ -30,7 +30,7 @@ namespace KEANet.Services.Implementations
             if (internetConnection == true)
             {
                 basket.Add(internetConnectionfromDb);
-            }         
+            }
             else
             {
                 if (!basket.Contains(internetConnectionfromDb))
@@ -69,20 +69,18 @@ namespace KEANet.Services.Implementations
         {
             if (basket.Count() == 0)
             {
-                return "Please select service!";
+                throw new ArgumentException("Please select service!");
             }
-            else
+
+            StringBuilder basketList = new StringBuilder();
+
+            foreach (var product in basket)
             {
-                StringBuilder basketList = new StringBuilder();
-
-                foreach (var product in basket)
-                {
-                    basketList.Append($"{product.Name} - {product.Price} - {product.Regularity}");
-                    basketList.AppendLine();
-                }
-
-                return basketList.ToString();
+                basketList.Append($"{product.Name} - {product.Price} - {product.Regularity}");
+                basketList.AppendLine();
             }
+
+            return basketList.ToString().Trim();
         }
 
         public int RemovePhoneLines()

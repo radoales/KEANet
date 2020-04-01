@@ -6,8 +6,8 @@ namespace KEANet.Data
 {
     public enum Regularity
     {
-        once,
-        monthly
+        Once,
+        Monthly
     }
     public class Product
     {
