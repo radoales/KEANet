@@ -10,11 +10,12 @@ namespace KEANet.Services.Implementations
     public class PurchaseService : IPurchaseService
     {
         public readonly Database _db;
-        public static List<Product> basket = new List<Product>();
+        public List<Product> basket;
 
         public PurchaseService(Database db)
         {
             this._db = db;
+            this.basket = new List<Product>();
         }
         public int AddInternetConnection(bool internetConnection)
         {
@@ -28,11 +29,14 @@ namespace KEANet.Services.Implementations
 
             if (internetConnection == true)
             {
-
                 basket.Add(internetConnectionfromDb);
-            }
+            }         
             else
             {
+                if (!basket.Contains(internetConnectionfromDb))
+                {
+                    throw new ArgumentException("There is no Internet Connection to be removed");
+                }
                 basket.Remove(internetConnectionfromDb);
             }
 
@@ -42,14 +46,14 @@ namespace KEANet.Services.Implementations
         public int AddPhoneLines()
         {
             var phoneLinefromDb = _db.Products.
-                    FirstOrDefault(x => x.Name == "Phone Lines");
+                    FirstOrDefault(x => x.Name == "Phone Line");
 
             if (phoneLinefromDb == null)
             {
                 throw new ArgumentException("Product not found");
             }
 
-            if (basket.Count(x => x.Name == "Phone Lines") <= 7)
+            if (basket.Count(x => x.Name == "Phone Line") <= 7)
             {
                 basket.Add(phoneLinefromDb);
             }
@@ -125,10 +129,18 @@ namespace KEANet.Services.Implementations
 
             if (phoneModelFromDb == null)
             {
-                throw new ArgumentException("No selected model to add");
+                throw new ArgumentException("No selected model to remove");
             }
 
-            basket.Remove(phoneModelFromDb);
+            var modelInBasket = basket.FirstOrDefault(x => x.Name == modelName);
+            if (modelInBasket == null)
+            {
+                throw new ArgumentException("No such model in the basket");
+            }
+
+            var modelIndexInBasket = basket.FindIndex(x => x.Name == modelName);
+
+            basket.RemoveAt(modelIndexInBasket);
 
             return basket.Sum(x => x.Price);
         }
