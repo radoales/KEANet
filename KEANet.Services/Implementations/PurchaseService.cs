@@ -1,12 +1,12 @@
-﻿using KEANet.Data;
-using KEANet.Services.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace KEANet.Services.Implementations
+﻿namespace KEANet.Services.Implementations
 {
+    using KEANet.Data;
+    using KEANet.Services.Interfaces;
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
+
     public class PurchaseService : IPurchaseService
     {
         public readonly Database _db;
