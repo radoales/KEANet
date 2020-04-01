@@ -27,16 +27,13 @@
                 .WithMessage(expexted);
         }
 
-        [Fact]
-        public void BasketWithItems_ShouldReturn_String()
+        [Theory]
+        [ClassData(typeof(SetUps.BuyTestData))]
+        public void BasketWithItems_ShouldReturn_String(Product a, Product b, Product c)
         {
             //Arange
             var service = MockPurchaseService();
-            var products = new List<Product>()
-            {
-                  new Product{Id = 3, Name = "Motorola G99", Price = 800, Regularity = Regularity.Once},
-                  new Product{Id = 4, Name = "iPhone 99", Price = 6000, Regularity = Regularity.Once},
-            };
+            var products = new List<Product>() { a, b, c };
             service.basket.AddRange(products);
             
             var buildExpected = new StringBuilder();
