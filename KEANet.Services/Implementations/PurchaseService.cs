@@ -45,15 +45,17 @@ namespace KEANet.Services.Implementations
 
         public int AddPhoneLines()
         {
+            const string productName = "Phone Line";
+
             var phoneLinefromDb = _db.Products.
-                    FirstOrDefault(x => x.Name == "Phone Line");
+                    FirstOrDefault(x => x.Name == productName);
 
             if (phoneLinefromDb == null)
             {
                 throw new ArgumentException("Product not found");
             }
 
-            if (basket.Count(x => x.Name == "Phone Line") <= 7)
+            if (basket.Count(x => x.Name == productName) <= 7)
             {
                 basket.Add(phoneLinefromDb);
             }
@@ -85,22 +87,24 @@ namespace KEANet.Services.Implementations
 
         public int RemovePhoneLines()
         {
+            const string productName = "Phone Line";
+
             var phoneLinefromDb = _db.Products.
-                    FirstOrDefault(x => x.Name == "Phone Lines");
+                    FirstOrDefault(x => x.Name == productName);
 
             if (phoneLinefromDb == null)
             {
                 throw new ArgumentException("Product not found");
             }
 
-            if (basket.Count(x => x.Name == "Phone Lines") > 0)
-            {
-                basket.Remove(phoneLinefromDb);
-            }
-            else
+            var phoneLineInBasket = basket.FirstOrDefault(x => x.Name == productName);
+            if (phoneLineInBasket == null)
             {
                 throw new ArgumentException("There are no lines to remove");
             }
+
+            var phoneLineIndexInBasket = basket.FindIndex(x => x.Name == productName);
+            basket.Remove(phoneLinefromDb);
 
             return basket.Sum(x => x.Price);
         }
