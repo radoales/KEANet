@@ -4,47 +4,53 @@ namespace KEANet.Tests
     using FluentAssertions;
     using static SetUps.Mocks;
     using System;
-    using System.Collections.Generic;
 
     public class AddInternetConnectionTest
     {
-        [Fact]
-        public void PassTrue_ShouldReturn_Int()
+        [Theory]
+        [InlineData(true, 200)]
+        public void PassTrue_ShouldReturn_Int(bool input, int expexted)
         {
             //Arange
             var service = MockPurchaseService();
 
             //Act
-           var result = service.AddInternetConnection(true);
+           var result = service.AddInternetConnection(input);
 
             //Assert
             result
                 .Should()
-                .Be(200);
+                .Be(expexted);
         }
-        [Fact]
-        public void PassFalse_ShouldReturn_Int()
+        [Theory]
+        [InlineData(false, 0)]
+        public void PassFalse_ShouldReturn_Int(bool input, int expexted)
         {
             //Arange
             var service = MockPurchaseService();
 
             //Act
-            var result = service.AddInternetConnection(false);
+            var result = service.AddInternetConnection(input);
 
             //Assert
             result
                 .Should()
-                .Be(0);
+                .Be(expexted);
         }
-        [Fact]
-        public void PurchaseServiceWithEmptyDatabase_ShouldThrow_ArgumentException()
+        [Theory]
+        [InlineData(false)]
+        public void PurchaseServiceWithEmptyDatabase_ShouldThrow_ArgumentException(bool input)
         {
             //Arange
             var service = MockPurchaseServiceWithEmptyDatabase();
 
             //Act
+            Action result = () => service.AddInternetConnection(input);
+
             //Assert
-            Assert.Throws<ArgumentException>(() => service.AddInternetConnection(true));
+            result
+                .Should()
+                .Throw<ArgumentException>();
         }
     }
 }
